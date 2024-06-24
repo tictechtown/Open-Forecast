@@ -1,5 +1,5 @@
-import { ForecastPeriod, WeatherCondition } from "../../types";
-import { detectCondition } from "../../utils";
+import { ForecastPeriod, WeatherCondition } from "../../../types";
+import { detectCondition } from "../../../utils/utils";
 
 function getTimelineClassName(condition: WeatherCondition): string {
   switch (condition) {

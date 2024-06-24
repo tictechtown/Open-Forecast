@@ -1,9 +1,9 @@
-import { ForecastPeriod, MeasureValue, WeatherCondition } from "./types";
+import { ForecastPeriod, MeasureValue, WeatherCondition } from "../types";
 
 const ONE_HOUR = 3600 * 1000;
 
 export function convertMeasureValues(
-  values: MeasureValue[]
+  values: MeasureValue[],
 ): { time: Date; value: number | null }[] {
   const res: { time: Date; value: number | null }[] = [];
   for (const value of values) {

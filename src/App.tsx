@@ -5,29 +5,23 @@ import {
   useQuery,
 } from "@tanstack/react-query";
 import "./App.css";
-import AutocompleteModal from "./AutocompleteModal";
-import Layout from "./Layout";
-import LocationForecast from "./components/location/LocationForecast";
+import { getWeatherData } from "./service/weather";
 import useCityStore from "./store/useCityStore";
-import { CityData, WeatherPoint } from "./types";
+import { CityData } from "./types";
+import LocationForecast from "./ui/forecast/LocationForecast";
+import Layout from "./ui/layout/Layout";
+import SearchModal from "./ui/search/SearchModal";
 
 const queryClient = new QueryClient();
-
-const getWeatherData = async ({ lat, long }: { lat: number; long: number }) => {
-  // points resolution, up to 4 decimals
-  return fetch(`https://api.weather.gov/points/${lat},${long}`).then(
-    (res) => res.json() as Promise<WeatherPoint>,
-  );
-};
 
 function WeatherApp() {
   const store = useCityStore();
 
-  const onSelect = (id) => {
+  const handleCitySelection = (id: number) => {
     store.selectCityId(id);
   };
 
-  const addCity = (city: CityData) => {
+  const handleAddCity = (city: CityData) => {
     store.addCity(city);
   };
 
@@ -35,9 +29,9 @@ function WeatherApp() {
     <Layout
       sideContent={store.cities}
       selectedId={store.selectedId}
-      onSelect={onSelect}
+      onSelect={handleCitySelection}
     >
-      <AutocompleteModal onSelect={addCity} />
+      <SearchModal onSelect={handleAddCity} />
       <WeatherLocation
         city={store.cities.find((s) => s.id === store.selectedId)}
       />

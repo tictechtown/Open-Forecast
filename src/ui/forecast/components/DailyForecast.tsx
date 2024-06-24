@@ -1,6 +1,6 @@
-import { ForecastPeriod } from "../../types";
-import { detectCondition } from "../../utils";
-import WeatherConditionIcon from "../icons/WeatherConditionIcon";
+import { ForecastPeriod } from "../../../types";
+import { detectCondition } from "../../../utils/utils";
+import WeatherConditionIcon from "../../icons/WeatherConditionIcon";
 
 // https://erikflowers.github.io/weather-icons/
 // https://react-icons.github.io/react-icons/icons/wi/
@@ -70,8 +70,9 @@ function DailyForecast({ periods }: Props) {
     maxTemp = Math.max(maxTemp, p.temperature);
   }
 
-  const groupedPeriods = Object.groupBy(periods, ({ number }) =>
-    Math.floor((number - 1) / 2),
+  const groupedPeriods: Record<number, ForecastPeriod[]> = Object.groupBy(
+    periods,
+    ({ number }: ForecastPeriod) => Math.floor((number - 1) / 2),
   );
 
   return (

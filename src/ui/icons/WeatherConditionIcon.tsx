@@ -1,12 +1,12 @@
 import { WeatherCondition } from "../../types";
-import ClearNight from "./ClearNight";
-import Cloudy from "./Cloudy";
-import MostlyCloudy from "./MostlyCloudy";
-import MostlySunny from "./MostlySunny";
-import PartlyCloudy from "./PartlyCloudy";
-import Rain from "./Rain";
-import Sunny from "./Sunny";
-import Thunder from "./Thunder";
+import ClearNight from "./components/ClearNight";
+import Cloudy from "./components/Cloudy";
+import MostlyCloudy from "./components/MostlyCloudy";
+import MostlySunny from "./components/MostlySunny";
+import PartlyCloudy from "./components/PartlyCloudy";
+import Rain from "./components/Rain";
+import Sunny from "./components/Sunny";
+import Thunder from "./components/Thunder";
 
 type Props = {
   condition: WeatherCondition;

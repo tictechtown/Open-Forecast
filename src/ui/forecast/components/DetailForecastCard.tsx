@@ -1,4 +1,4 @@
-import { WeatherGridpoint } from "../../types";
+import { WeatherGridpoint } from "../../../types";
 import "./DetailForecastCard.css";
 
 type Props = {
@@ -11,13 +11,13 @@ function DetailItem({
   unit,
 }: {
   title: string;
-  value: number;
+  value: number | null;
   unit: string;
 }) {
   return (
     <div className="detail-item">
       <div className="detail-value">
-        {value.toFixed(0)}
+        {value?.toFixed(0)}
         {unit}
       </div>
       <div className="detail-title">{title}</div>

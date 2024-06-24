@@ -1,6 +1,6 @@
-import { ForecastPeriod } from "../../types";
-import { convertCelsiusToF, detectCondition } from "../../utils";
-import WeatherConditionIcon from "../icons/WeatherConditionIcon";
+import { ForecastPeriod } from "../../../types";
+import { convertCelsiusToF, detectCondition } from "../../../utils/utils";
+import WeatherConditionIcon from "../../icons/WeatherConditionIcon";
 import "./NowCard.css";
 
 type Props = {

@@ -1,58 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
+import {
+  getDailyForecast,
+  getForecast,
+  getHourlyForecast,
+} from "../../service/weather";
 import { WeatherForecast, WeatherGridpoint } from "../../types";
-import { convertMeasureValues } from "../../utils";
-import DailyForecast from "./DailyForecast";
-import DetailForecastCard from "./DetailForecastCard";
-import HourlyForecastCard from "./HourlyForecast";
+import { convertMeasureValues } from "../../utils/utils";
 import "./LocationForecast.css";
-import NowCard from "./NowCard";
-import RainForecast from "./RainForecast";
-
-const getForecast = async ({
-  gridId,
-  gridX,
-  gridY,
-}: {
-  gridId: string;
-  gridX: number;
-  gridY: number;
-}) => {
-  return fetch(
-    `https://api.weather.gov/gridpoints/${gridId}/${gridX},${gridY}`,
-  ).then((res) => res.json() as Promise<WeatherGridpoint>);
-};
-
-const getHourlyForecast = async ({
-  gridId,
-  gridX,
-  gridY,
-}: {
-  gridId: string;
-  gridX: number;
-  gridY: number;
-}) => {
-  return fetch(
-    `https://api.weather.gov/gridpoints/${gridId}/${gridX},${gridY}/forecast/hourly`,
-  ).then((res) => res.json() as Promise<WeatherForecast>);
-};
-
-const getDailyForecast = async ({
-  gridId,
-  gridX,
-  gridY,
-}: {
-  gridId: string;
-  gridX: number;
-  gridY: number;
-}) => {
-  console.log(
-    "fetching",
-    `https://api.weather.gov/gridpoints/${gridId}/${gridX},${gridY}/forecast`,
-  );
-  return fetch(
-    `https://api.weather.gov/gridpoints/${gridId}/${gridX},${gridY}/forecast`,
-  ).then((res) => res.json() as Promise<WeatherForecast>);
-};
+import HourlyForecastCard from "./components//HourlyForecast";
+import RainForecast from "./components//RainForecast";
+import DailyForecast from "./components/DailyForecast";
+import DetailForecastCard from "./components/DetailForecastCard";
+import NowCard from "./components/NowCard";
 
 type Props = {
   displayName: string;

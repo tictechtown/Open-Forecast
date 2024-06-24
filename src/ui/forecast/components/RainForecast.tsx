@@ -1,7 +1,7 @@
 import React from "react";
 import { Chart } from "react-charts";
-import { WeatherGridpoint } from "../../types";
-import { convertMeasureValues } from "../../utils";
+import { WeatherGridpoint } from "../../../types";
+import { convertMeasureValues } from "../../../utils/utils";
 
 type Props = {
   precipitationValues: WeatherGridpoint["properties"]["quantitativePrecipitation"];
@@ -14,7 +14,7 @@ function RainForecast({
 }: Props) {
   // const rainPeriods = convertMeasureValues(precipitationValues.values);
   const probPeriods = convertMeasureValues(
-    probabilityPrecipitationValues.values
+    probabilityPrecipitationValues.values,
   );
 
   const currentTime = Date.now();
@@ -40,7 +40,7 @@ function RainForecast({
     () => ({
       getValue: (datum) => datum.time as Date,
     }),
-    []
+    [],
   );
 
   const secondaryAxes = React.useMemo(
@@ -50,7 +50,7 @@ function RainForecast({
         stacked: true,
       },
     ],
-    []
+    [],
   );
 
   return (

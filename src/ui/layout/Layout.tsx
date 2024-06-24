@@ -1,18 +1,19 @@
-import AutoComplete from "./AutoComplete";
+import { ReactNode } from "react";
+import { CityData } from "../../types";
+import SearchBox from "../search/SearchBox";
 import "./Layout.css";
-import { CityData } from "./types";
 
 type Props = {
   sideContent: CityData[];
   selectedId: CityData["id"] | null;
   onSelect: (value: CityData["id"]) => void;
-};
+} & { children?: ReactNode };
 
 function Layout(props: Props) {
   const { children, sideContent, selectedId, onSelect } = props;
 
   const startSearch = () => {
-    document.querySelector("#search-modal").showModal();
+    (document.querySelector("#search-modal") as HTMLDialogElement)?.showModal();
   };
 
   const hideLocation = () => {
@@ -25,7 +26,7 @@ function Layout(props: Props) {
     <div>
       <nav id="nav-bar">
         <div className="search-box-small">
-          <AutoComplete onSelect={onAdd} />
+          <SearchBox onSelect={onAdd} />
           <button onClick={hideLocation}></button>
         </div>
         <div className="search-box-large">
