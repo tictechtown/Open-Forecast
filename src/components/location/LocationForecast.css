@@ -1,0 +1,52 @@
+.location-forecast {
+  display: grid;
+  gap: 1em;
+  grid-template-areas:
+    "header"
+    "now"
+    "hourly"
+    "daily"
+    "details"
+    "rain";
+
+  padding: 1em;
+  margin-inline: auto;
+  max-width: 1024px;
+
+  .now-card {
+    grid-area: now;
+  }
+  .hourly-card {
+    grid-area: hourly;
+  }
+  .daily-card {
+    grid-area: daily;
+  }
+  .rain-card {
+    grid-area: rain;
+  }
+  .header {
+    grid-area: header;
+  }
+  .details-card {
+    grid-area: details;
+  }
+}
+
+@media (min-width: 780px) {
+  .location-forecast {
+    margin-inline-start: 25%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .location-forecast {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "header header"
+      "now   hourly"
+      "daily hourly"
+      "daily details"
+      "rain  rain";
+  }
+}

@@ -1,0 +1,32 @@
+.now-card {
+  background-color: unset;
+  box-shadow: unset;
+  padding: unset;
+  .main {
+    display: flex;
+    flex-direction: row;
+    gap: 5em;
+    justify-content: space-between;
+
+    .primary {
+      display: flex;
+      flex-direction: row;
+      font-size: 3em;
+      font-weight: bold;
+      font-family: var(--ui-font-family-monospace);
+      color: var(--ui-ac-tx);
+    }
+
+    .secondary {
+      font-size: 0.9em;
+      text-align: end;
+      font-weight: 300;
+      padding-right: 2em;
+
+      div:first-child {
+        color: var(--ui-ac-tx);
+        font-weight: 500;
+      }
+    }
+  }
+}

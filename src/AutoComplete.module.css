@@ -1,0 +1,33 @@
+.search-box {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+
+  .search-box-results ul {
+    list-style-type: none;
+    list-style-position: unset;
+  }
+
+  .search-box-results li {
+    display: flex;
+    height: 44px;
+    padding-inline: 2em;
+    align-items: center;
+  }
+
+  .search-box-results li:hover {
+    background-color: cadetblue;
+    cursor: pointer;
+  }
+}
+
+.search-box > input {
+  width: 100%;
+  padding-inline: 1em;
+  padding-block: 0.5em;
+  border-radius: 0.25rem;
+  border-width: 0.0525rem;
+  appearance: none;
+}
