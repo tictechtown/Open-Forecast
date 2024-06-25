@@ -1,5 +1,5 @@
 .search-box {
-  padding: 2em;
+  padding-block: 2em;
   display: flex;
   flex-direction: column;
   gap: 1em;
@@ -27,9 +27,22 @@
 
 .search-box > input {
   width: 100%;
+  border-color: transparent;
   padding-inline: 1em;
   padding-block: 0.5em;
-  border-radius: var(--ui-border-radius);
-  border-width: 0.0525rem;
-  appearance: none;
+  font-size: 1.5em;
+  line-height: 2em;
+  font-weight: 500;
+  box-sizing: border-box;
+}
+
+.seach-box-large {
+  .search-box > input {
+    border-radius: 2em;
+    padding: 2em;
+  }
+}
+
+.search-box > input:focus {
+  outline: 2px solid black;
 }
