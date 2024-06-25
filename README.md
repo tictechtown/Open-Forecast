@@ -1,17 +1,18 @@
 # Open Forecast
 
-A weather app built with Vite, React and Typescript.
+A weather app built with [Vite](https://vitejs.dev/), [React](https://react.dev/) and [Typescript](https://www.typescriptlang.org/).
+
 Toy project to learn/re-learn CSS properties
 
 ## Features
 
 - Display Location Weather using Weather.gov API
-  - Manage Data Fetching using React-Query
+  - Manage Data Fetching using [React-Query](https://tanstack.com/query/v3)
 - GeoLocation using custom Trie implementation
   - supports search with typo
   - **TODO** supports weighted results, using population
-  - all locally, no 3rd-party service used
-- Location Management using Zustand, with persistence on LocalStorage
+  - search is completely local, no 3rd-party service used
+- Location Management using [Zustand](https://github.com/pmndrs/zustand), with persistence on LocalStorage
 - Adaptive Layout (mobile vs desktop)
 - Animated Weather Icons, using CSS animations
 
@@ -25,7 +26,6 @@ Toy project to learn/re-learn CSS properties
 ├── public
 │   ├── favicon.svg
 │   └── us_cities.csv
-├── src
 │   ├── App.css
 │   ├── App.tsx
 │   ├── WeatherApp.tsx
@@ -40,6 +40,9 @@ Toy project to learn/re-learn CSS properties
 │   │   └── useCityStore.tsx
 │   ├── types.ts
 │   ├── ui
+│   │   ├── common
+│   │   │   ├── Loader.module.css
+│   │   │   └── Loader.tsx
 │   │   ├── forecast
 │   │   │   ├── LocationForecast.css
 │   │   │   ├── LocationForecast.tsx
@@ -50,7 +53,8 @@ Toy project to learn/re-learn CSS properties
 │   │   │   └── components
 │   │   ├── layout
 │   │   │   ├── Layout.css
-│   │   │   └── Layout.tsx
+│   │   │   ├── Layout.tsx
+│   │   │   └── components
 │   │   └── search
 │   │       ├── SearchBox.module.css
 │   │       ├── SearchBox.tsx
@@ -70,8 +74,6 @@ Toy project to learn/re-learn CSS properties
 
 - Add weighted search
 - Remove city from list
-- UI System Token
 - Simplify rain forecast
 - Update hourly forecast to dim night time
-- Handle API errors
 - Support Celsius/Farenheit settings

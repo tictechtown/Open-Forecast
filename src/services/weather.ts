@@ -16,8 +16,10 @@ export const getWeatherData = async ({
   long: number;
 }) => {
   // points resolution, up to 4 decimals
+  // TODO - keep only up to 4
   const response = await fetch(`https://api.weather.gov/points/${lat},${long}`);
   if (!response.ok) {
+    // TODO - differentiate between 404, 500 and 503
     throw new Error("Network Error");
   }
   return response.json();
