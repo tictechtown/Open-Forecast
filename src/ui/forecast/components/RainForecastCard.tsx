@@ -8,7 +8,7 @@ type Props = {
   probabilityPrecipitationValues: WeatherGridpoint["properties"]["probabilityOfPrecipitation"];
 };
 
-function RainForecast({ probabilityPrecipitationValues }: Props) {
+function RainForecastCard({ probabilityPrecipitationValues }: Props) {
   const probPeriods = convertMeasureValues(
     probabilityPrecipitationValues.values,
   );
@@ -79,4 +79,4 @@ function RainForecast({ probabilityPrecipitationValues }: Props) {
   );
 }
 
-export default RainForecast;
+export default RainForecastCard;

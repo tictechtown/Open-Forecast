@@ -13,6 +13,14 @@ type Action = {
   selectCityId: (cityId: CityData["id"]) => void;
 };
 
+export const CURRENT_LOCATION = {
+  id: -1,
+  lat: -1,
+  long: -1,
+  name: "Current Location",
+  stateCode: "",
+};
+
 const useCityStore = create<State & Action>()(
   persist(
     (set) => ({

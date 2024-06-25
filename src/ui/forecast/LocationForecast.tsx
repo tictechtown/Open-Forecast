@@ -7,11 +7,11 @@ import {
 import { WeatherForecast, WeatherGridpoint } from "../../types";
 import { convertMeasureValues } from "../../utils/utils";
 import "./LocationForecast.css";
-import HourlyForecastCard from "./components//HourlyForecast";
-import RainForecast from "./components//RainForecast";
-import DailyForecast from "./components/DailyForecast";
+import DailyForecastCard from "./components/DailyForecastCard";
 import DetailForecastCard from "./components/DetailForecastCard";
+import HourlyForecastCard from "./components/HourlyForecastCard";
 import NowCard from "./components/NowCard";
+import RainForecastCard from "./components/RainForecastCard";
 
 type Props = {
   displayName: string;
@@ -113,9 +113,9 @@ function LocationForecast({ displayName, gridId, gridX, gridY }: Props) {
         lowTemp={lowTemp}
       />
       <HourlyForecastCard periods={hourlyData.properties.periods} />
-      <DailyForecast periods={dailyData.properties.periods} />
+      <DailyForecastCard periods={dailyData.properties.periods} />
       <DetailForecastCard gridpoint={data} />
-      <RainForecast
+      <RainForecastCard
         probabilityPrecipitationValues={probabilityPrecipitationValues}
       />
     </div>

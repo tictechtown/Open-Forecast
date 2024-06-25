@@ -1,29 +1,10 @@
 import { WeatherGridpoint } from "../../../types";
 import "./DetailForecastCard.css";
+import DetailItem from "./DetailItem";
 
 type Props = {
   gridpoint: WeatherGridpoint;
 };
-
-function DetailItem({
-  title,
-  value,
-  unit,
-}: {
-  title: string;
-  value: number | null;
-  unit: string;
-}) {
-  return (
-    <div className="detail-item">
-      <div className="detail-value">
-        {value?.toFixed(0)}
-        {unit}
-      </div>
-      <div className="detail-title">{title}</div>
-    </div>
-  );
-}
 
 function DetailForecastCard({ gridpoint }: Props) {
   return (
