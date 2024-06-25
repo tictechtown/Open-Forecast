@@ -18,26 +18,36 @@ Toy project to learn/re-learn CSS properties
 ## Architecture
 
 ```
+├── README.md
+├── index.html
+├── package-lock.json
+├── package.json
+├── public
+│   ├── favicon.svg
+│   └── us_cities.csv
 ├── src
 │   ├── App.css
 │   ├── App.tsx
+│   ├── WeatherApp.tsx
 │   ├── assets
+│   ├── hooks
+│   │   └── useLocation.tsx
 │   ├── main.tsx
-│   ├── service
+│   ├── services
 │   │   ├── prefix-tree.ts
 │   │   └── weather.ts
-│   ├── store
+│   ├── stores
 │   │   └── useCityStore.tsx
 │   ├── types.ts
 │   ├── ui
-│   │   ├── common
 │   │   ├── forecast
 │   │   │   ├── LocationForecast.css
 │   │   │   ├── LocationForecast.tsx
-│   │   │   └── components/
+│   │   │   ├── WeatherLocationForecast.tsx
+│   │   │   └── components
 │   │   ├── icons
 │   │   │   ├── WeatherConditionIcon.tsx
-│   │   │   └── components/
+│   │   │   └── components
 │   │   ├── layout
 │   │   │   ├── Layout.css
 │   │   │   └── Layout.tsx
@@ -45,20 +55,23 @@ Toy project to learn/re-learn CSS properties
 │   │       ├── SearchBox.module.css
 │   │       ├── SearchBox.tsx
 │   │       ├── SearchModal.tsx
-│   │       └── components/
+│   │       └── components
 │   ├── utils
-│   │   └── utils.ts
+│   │   ├── converters.ts
+│   │   └── formatters.ts
 │   └── vite-env.d.ts
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
 ```
 
 ## Roadmap
 
-- Add current location (geolocation API)
 - Add weighted search
 - Remove city from list
 - UI System Token
 - Simplify rain forecast
 - Update hourly forecast to dim night time
-- Dark Mode support
 - Handle API errors
 - Support Celsius/Farenheit settings
