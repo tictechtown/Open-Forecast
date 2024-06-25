@@ -6,15 +6,17 @@ import styles from "./SearchBox.module.css";
 import SuggestionList from "./components/SuggestionList";
 import publicCSV from "/us_cities.csv?url";
 
-const fullUrl = `http://localhost:5173/${publicCSV}`;
-
 const prefixTree = new PrefixTree<CityData>();
 
+// full URL for our static CSV asset
+const cityListUrl = new URL(publicCSV, import.meta.url).href;
+
 // init prefix-tree
-Papa.parse(fullUrl, {
+Papa.parse(cityListUrl, {
   worker: true,
   download: true,
   step: function (row: {
+    // id, state_code, state_name, city, county, latitude, longitude
     data: [number, string, string, string, string, number, number];
   }) {
     const data: CityData = {
