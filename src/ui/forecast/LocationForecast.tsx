@@ -75,7 +75,7 @@ function LocationForecast({ displayName, gridId, gridX, gridY }: Props) {
         <div className="header" onClick={showLocations}>
           <h1>{displayName}</h1>
         </div>
-        Error
+        Error getting data
       </div>
     );
   }

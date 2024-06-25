@@ -2,7 +2,6 @@
  * Weather API
  * https://www.weather.gov/documentation/services-web-api
  */
-import { WeatherForecast, WeatherGridpoint, WeatherPoint } from "../types";
 
 /**
  * Returns a WeatherPoint from a Latitude/Longitute coordinates
@@ -17,9 +16,11 @@ export const getWeatherData = async ({
   long: number;
 }) => {
   // points resolution, up to 4 decimals
-  return fetch(`https://api.weather.gov/points/${lat},${long}`).then(
-    (res) => res.json() as Promise<WeatherPoint>,
-  );
+  const response = await fetch(`https://api.weather.gov/points/${lat},${long}`);
+  if (!response.ok) {
+    throw new Error("Network Error");
+  }
+  return response.json();
 };
 
 export const getForecast = async ({
@@ -31,9 +32,13 @@ export const getForecast = async ({
   gridX: number;
   gridY: number;
 }) => {
-  return fetch(
+  const response = await fetch(
     `https://api.weather.gov/gridpoints/${gridId}/${gridX},${gridY}`,
-  ).then((res) => res.json() as Promise<WeatherGridpoint>);
+  );
+  if (!response.ok) {
+    throw new Error("Network Error");
+  }
+  return response.json();
 };
 
 export const getHourlyForecast = async ({
@@ -45,9 +50,13 @@ export const getHourlyForecast = async ({
   gridX: number;
   gridY: number;
 }) => {
-  return fetch(
+  const response = await fetch(
     `https://api.weather.gov/gridpoints/${gridId}/${gridX},${gridY}/forecast/hourly`,
-  ).then((res) => res.json() as Promise<WeatherForecast>);
+  );
+  if (!response.ok) {
+    throw new Error("Network Error");
+  }
+  return response.json();
 };
 
 export const getDailyForecast = async ({
@@ -59,11 +68,11 @@ export const getDailyForecast = async ({
   gridX: number;
   gridY: number;
 }) => {
-  console.log(
-    "fetching",
+  const response = await fetch(
     `https://api.weather.gov/gridpoints/${gridId}/${gridX},${gridY}/forecast`,
   );
-  return fetch(
-    `https://api.weather.gov/gridpoints/${gridId}/${gridX},${gridY}/forecast`,
-  ).then((res) => res.json() as Promise<WeatherForecast>);
+  if (!response.ok) {
+    throw new Error("Network Error");
+  }
+  return response.json();
 };
