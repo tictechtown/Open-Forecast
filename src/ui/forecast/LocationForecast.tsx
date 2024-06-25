@@ -81,7 +81,7 @@ function LocationForecast({ displayName, gridId, gridX, gridY }: Props) {
     dailyData.properties.periods[0],
     dailyData.properties.periods[1],
   ].map((p) => p.temperature);
-  //
+
   const lowTemp = Math.min(...dailyTemps);
   const highTemp = Math.max(...dailyTemps);
   const currentTime = Date.now();

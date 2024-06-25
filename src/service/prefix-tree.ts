@@ -72,7 +72,6 @@ export class PrefixTree<T> {
         // no results, we decrease the "error distance" and rerun the algo
         for (const k of Object.keys(node.children)) {
           const newPrefix = `${token.slice(0, i)}${k}${token.slice(i + 1)}`;
-          console.log("previx", token, newPrefix);
           results = results.concat(
             this.searchWithPrefix(newPrefix, distance - 1),
           );

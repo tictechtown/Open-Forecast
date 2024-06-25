@@ -16,7 +16,6 @@ function DailyForecastItem({
   minTemp: number;
   maxTemp: number;
 }) {
-  console.log("dailyP", period);
   const date = new Date(period[0].startTime);
   const day =
     index == 0
