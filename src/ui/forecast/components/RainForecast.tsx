@@ -5,33 +5,21 @@ import { TimeFormatter } from "../../../utils/formatters";
 import { convertMeasureValues } from "../../../utils/utils";
 
 type Props = {
-  precipitationValues: WeatherGridpoint["properties"]["quantitativePrecipitation"];
   probabilityPrecipitationValues: WeatherGridpoint["properties"]["probabilityOfPrecipitation"];
 };
 
-function RainForecast({
-  precipitationValues,
-  probabilityPrecipitationValues,
-}: Props) {
-  // const rainPeriods = convertMeasureValues(precipitationValues.values);
+function RainForecast({ probabilityPrecipitationValues }: Props) {
   const probPeriods = convertMeasureValues(
     probabilityPrecipitationValues.values,
   );
 
   const currentTime = Date.now();
 
-  // const rainNext24h = rainPeriods
-  //   .filter((p) => p.time.getTime() > currentTime - 3600 * 1000)
-  //   .slice(0, 24);
   const probNext24h = probPeriods
     .filter((p) => p.time.getTime() > currentTime - 3600 * 1000)
     .slice(0, 24);
 
   const data = [
-    // {
-    //   label: "Rain",
-    //   data: rainNext24h,
-    // },
     {
       label: "Prob",
       data: probNext24h,
@@ -55,12 +43,20 @@ function RainForecast({
       {
         getValue: (datum: { value: number | null }) => datum.value,
         stacked: true,
+        formatters: {
+          scale: (data: number) => `${data}%`,
+        },
         hardMax: 100,
+        min: 0,
         hardMin: 0,
       },
     ],
     [],
   );
+
+  const isInDarkMode =
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches;
 
   return (
     <div className="rain-card">
@@ -71,9 +67,11 @@ function RainForecast({
             tooltip: false,
             useIntersectionObserver: false,
             data,
+            // @ts-ignore
             primaryAxis,
             secondaryAxes,
             padding: 20,
+            dark: isInDarkMode,
           }}
         />
       </article>

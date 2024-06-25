@@ -23,7 +23,10 @@ type Props = {
 function LocationForecast({ displayName, gridId, gridX, gridY }: Props) {
   const { isPending, error, data } = useQuery<WeatherGridpoint>({
     queryKey: ["location-forecast", { gridId, gridX, gridY }],
-    queryFn: ({ queryKey }) => getForecast(queryKey[1]),
+    queryFn: ({ queryKey }) =>
+      getForecast(
+        queryKey[1] as { gridId: string; gridX: number; gridY: number },
+      ),
   });
 
   const {
@@ -32,7 +35,10 @@ function LocationForecast({ displayName, gridId, gridX, gridY }: Props) {
     data: hourlyData,
   } = useQuery<WeatherForecast>({
     queryKey: ["location-forecast-hourly", { gridId, gridX, gridY }],
-    queryFn: ({ queryKey }) => getHourlyForecast(queryKey[1]),
+    queryFn: ({ queryKey }) =>
+      getHourlyForecast(
+        queryKey[1] as { gridId: string; gridX: number; gridY: number },
+      ),
   });
 
   const {
@@ -41,7 +47,10 @@ function LocationForecast({ displayName, gridId, gridX, gridY }: Props) {
     data: dailyData,
   } = useQuery<WeatherForecast>({
     queryKey: ["location-forecast-daily", { gridId, gridX, gridY }],
-    queryFn: ({ queryKey }) => getDailyForecast(queryKey[1]),
+    queryFn: ({ queryKey }) =>
+      getDailyForecast(
+        queryKey[1] as { gridId: string; gridX: number; gridY: number },
+      ),
   });
 
   const showLocations = () => {
@@ -72,7 +81,6 @@ function LocationForecast({ displayName, gridId, gridX, gridY }: Props) {
 
   const apparentTemperatureValues = data.properties.apparentTemperature;
 
-  const precipitationValues = data.properties.quantitativePrecipitation;
   const probabilityPrecipitationValues =
     data.properties.probabilityOfPrecipitation;
 
@@ -108,7 +116,6 @@ function LocationForecast({ displayName, gridId, gridX, gridY }: Props) {
       <DailyForecast periods={dailyData.properties.periods} />
       <DetailForecastCard gridpoint={data} />
       <RainForecast
-        precipitationValues={precipitationValues}
         probabilityPrecipitationValues={probabilityPrecipitationValues}
       />
     </div>

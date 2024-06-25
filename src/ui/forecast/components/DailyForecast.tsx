@@ -69,6 +69,7 @@ function DailyForecast({ periods }: Props) {
     maxTemp = Math.max(maxTemp, p.temperature);
   }
 
+  // @ts-ignore
   const groupedPeriods: Record<number, ForecastPeriod[]> = Object.groupBy(
     periods,
     ({ number }: ForecastPeriod) => Math.floor((number - 1) / 2),

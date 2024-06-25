@@ -55,7 +55,7 @@ function SearchBox({ onSelect }: Props) {
       <input
         type="text"
         value={searchValue}
-        placeholder="Search a city"
+        placeholder="Search for a location"
         onChange={onChange}
       ></input>
 
