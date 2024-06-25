@@ -6,6 +6,7 @@ import {
 } from "../../services/weather";
 import { WeatherForecast, WeatherGridpoint } from "../../types";
 import { convertMeasureValues } from "../../utils/converters";
+import Loader from "../common/Loader";
 import "./LocationForecast.css";
 import DailyForecastCard from "./components/DailyForecastCard";
 import DetailForecastCard from "./components/DetailForecastCard";
@@ -62,8 +63,8 @@ function LocationForecast({ displayName, gridId, gridX, gridY }: Props) {
       <div className="location-forecast">
         <div className="header" onClick={showLocations}>
           <h1>{displayName}</h1>
+          <Loader />
         </div>
-        Pending
       </div>
     );
   }

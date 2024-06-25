@@ -32,9 +32,10 @@ Papa.parse(cityListUrl, {
 
 type Props = {
   onSelect: (value: CityData) => void;
+  large?: boolean;
 };
 
-function SearchBox({ onSelect }: Props) {
+function SearchBox({ onSelect, large = false }: Props) {
   const [searchValue, setSearchValue] = useState("");
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,7 +54,7 @@ function SearchBox({ onSelect }: Props) {
   }, [searchValue]);
 
   return (
-    <div className={styles["search-box"]}>
+    <div className={`${styles["search-box"]} ${large ? styles["large"] : ""}`}>
       <input
         type="text"
         value={searchValue}

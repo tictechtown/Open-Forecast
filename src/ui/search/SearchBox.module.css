@@ -36,11 +36,8 @@
   box-sizing: border-box;
 }
 
-.seach-box-large {
-  .search-box > input {
-    border-radius: 2em;
-    padding: 2em;
-  }
+.large > input {
+  border-radius: 2em;
 }
 
 .search-box > input:focus {

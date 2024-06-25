@@ -25,6 +25,11 @@
     background-position: center left;
     background-position-x: 0.5em;
     cursor: pointer;
+
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    align-items: center;
   }
 
   .now-card {
@@ -86,5 +91,24 @@
       width: 70vw;
       height: 70vh;
     }
+  }
+}
+
+.location-context {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 1em;
+  justify-self: center;
+  align-items: center;
+
+  > :first-child {
+    width: 3em;
+    height: 3em;
+    border-width: 0.2em;
+  }
+
+  > div {
+    font-size: 2em;
   }
 }

@@ -3,6 +3,7 @@ import useLocation from "../../hooks/useLocation";
 import { getWeatherData } from "../../services/weather";
 import { CityData } from "../../types";
 import { formatCityName } from "../../utils/formatters";
+import Loader from "../common/Loader";
 import LocationForecast from "./LocationForecast";
 
 function WeatherLocationForecast({ city }: { city: CityData | undefined }) {
@@ -43,7 +44,14 @@ function WeatherLocationForecast({ city }: { city: CityData | undefined }) {
   }
 
   if (isPending || isLocationPending) {
-    return <div className="location-forecast">Loading</div>;
+    return (
+      <div className="location-forecast">
+        <div className="location-context">
+          <Loader />
+          <div>Loading Content</div>
+        </div>
+      </div>
+    );
   }
 
   if (error || geoError) {

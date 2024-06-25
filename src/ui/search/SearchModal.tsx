@@ -25,7 +25,7 @@ function SearchModal({ onSelect }: Props) {
   return createPortal(
     <dialog id="search-modal" className="modal" onClick={closeModal}>
       <article key={key ? "true" : "false"}>
-        <SearchBox onSelect={_onSelect} />
+        <SearchBox onSelect={_onSelect} large />
       </article>
     </dialog>,
     document.body,
