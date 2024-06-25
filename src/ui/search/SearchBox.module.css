@@ -13,12 +13,14 @@
   .search-box-results li {
     display: flex;
     height: 44px;
-    padding-inline: 2em;
+    padding-inline: 1em;
+    border-radius: 2em;
     align-items: center;
+    color: var(--ui-txt);
   }
 
   .search-box-results li:hover {
-    background-color: cadetblue;
+    background-color: var(--ui-ac-3);
     cursor: pointer;
   }
 }
@@ -27,7 +29,7 @@
   width: 100%;
   padding-inline: 1em;
   padding-block: 0.5em;
-  border-radius: 0.25rem;
+  border-radius: var(--ui-border-radius);
   border-width: 0.0525rem;
   appearance: none;
 }

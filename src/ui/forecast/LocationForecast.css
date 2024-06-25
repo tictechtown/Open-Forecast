@@ -13,6 +13,20 @@
   margin-inline: auto;
   max-width: 1024px;
 
+  .header {
+    background-color: var(--ui-bg-1);
+    border-radius: 1em;
+    padding-inline: 3em;
+    padding-block: 0.5em;
+
+    background-image: var(--ui-icon-search);
+    background-size: 2em auto;
+    background-repeat: no-repeat;
+    background-position: center left;
+    background-position-x: 0.5em;
+    cursor: pointer;
+  }
+
   .now-card {
     grid-area: now;
   }
@@ -31,15 +45,19 @@
   .details-card {
     grid-area: details;
   }
-}
 
-@media (min-width: 780px) {
-  .location-forecast {
-    margin-inline-start: 25%;
+  .empty {
+    display: flex;
+    flex: 1;
+    width: 90vw;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 780px) {
   .location-forecast {
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
@@ -48,5 +66,25 @@
       "daily hourly"
       "daily details"
       "rain  rain";
+  }
+}
+
+@media (min-width: 1120px) {
+  .location-forecast {
+    margin-left: 18%;
+
+    .header {
+      background-color: unset;
+      border-radius: unset;
+      padding-inline: unset;
+      padding-block: unset;
+      background-image: unset;
+      cursor: unset;
+    }
+
+    .empty {
+      width: 70vw;
+      height: 70vh;
+    }
   }
 }

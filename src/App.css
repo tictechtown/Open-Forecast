@@ -6,20 +6,36 @@
   --ui-font-family-monospace: ui-monospace, SFMono-Regular, "SF Mono", Menlo,
     Consolas, "Liberation Mono", monospace;
   --ui-border-radius: 0.25rem;
-  --ui-border-width: 0.0625rem;
 
-  --ui-bg-1: #ffffff;
+  --ui-bg-0: #ffffff;
+  --ui-bg-1: #e8e0e8;
   --ui-bg-2: #f8f1f6;
   --ui-bg-3: #e5e7eb;
-  --ui-lk-1: #0070f3;
-  --ui-lk-2: #0366d6;
-  --ui-lk-tx: #ffffff;
-  --ui-ac-1: #79ffe1;
+  --ui-ac-1: #9f86ff;
+  --ui-ac-2: #cbbeff;
+  --ui-ac-3: rgb(220, 218, 245);
   --ui-ac-tx: #0c4047;
+  --ui-skim: rgba(23, 23, 23, 0.5);
   --ui-card-border: rgba(23, 23, 23, 0.05);
+  --ui-txt: #333;
 
   --ui-icon-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E");
   --ui-icon-search: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(136, 145, 164)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+  --ui-icon-loading: url("data:image/svg+xml,%3Csvg fill='none' height='24' width='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' %3E%3Cstyle%3E g %7B animation: rotate 2s linear infinite; transform-origin: center center; %7D circle %7B stroke-dasharray: 75,100; stroke-dashoffset: -5; animation: dash 1.5s ease-in-out infinite; stroke-linecap: round; %7D @keyframes rotate %7B 0%25 %7B transform: rotate(0deg); %7D 100%25 %7B transform: rotate(360deg); %7D %7D @keyframes dash %7B 0%25 %7B stroke-dasharray: 1,100; stroke-dashoffset: 0; %7D 50%25 %7B stroke-dasharray: 44.5,100; stroke-dashoffset: -17.5; %7D 100%25 %7B stroke-dasharray: 44.5,100; stroke-dashoffset: -62; %7D %7D %3C/style%3E%3Cg%3E%3Ccircle cx='12' cy='12' r='10' fill='none' stroke='rgb(136, 145, 164)' stroke-width='4' /%3E%3C/g%3E%3C/svg%3E");
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+  :root {
+    --ui-bg-0: #000;
+    --ui-bg-1: rgb(33, 31, 33);
+    --ui-bg-2: rgb(28, 27, 29);
+    --ui-txt: #fff;
+
+    --ui-ac-1: rgb(103, 80, 164);
+    --ui-ac-2: rgba(103, 80, 164, 0.6);
+    --ui-ac-3: rgba(103, 80, 164, 0.2);
+    --ui-ac-tx: #6750a4;
+  }
 }
 
 @layer base {
@@ -68,6 +84,7 @@ body {
   font-family: var(--ui-font-family);
   background-color: var(--ui-bg-2);
   position: relative;
+  color: var(--ui-txt);
 }
 
 h1,
@@ -120,7 +137,7 @@ h6 {
 }
 
 .grid-item-card {
-  background-color: #9f86ff;
+  background-color: var(--ui-ac-1);
   border-radius: 0.8em;
   padding-inline: 0.5em;
   padding-block: 0.2em;
@@ -137,13 +154,9 @@ h6 {
 
 article {
   border-radius: 1em;
-  background-color: var(--ui-bg-1);
+  background-color: var(--ui-bg-0);
   padding: 1em;
   box-shadow: 0 0 0 1px var(--ui-card-border);
-}
-
-article > footer {
-  font-weight: 400;
 }
 
 .timeline-sun {
@@ -185,55 +198,16 @@ article > footer {
   background-color: #3a3a45;
 }
 
-.timeline-heat {
-  background-color: #f0341f;
-}
-
-.search {
-  background-color: #9f86ff;
-  border-radius: 2em;
-  padding-inline: 2em;
-  padding-block: 1em;
-  max-width: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(23, 23, 23, 0.5);
+  background-color: var(--ui-skim);
   backdrop-filter: blur(2px);
   border: 0;
   box-sizing: unset;
-}
-
-.location-forecast .header {
-  background-color: #e8e0e8;
-  border-radius: 1em;
-  padding-inline: 3em;
-  padding-block: 0.5em;
-
-  background-image: var(--ui-icon-search);
-  background-size: 2em auto;
-  background-repeat: no-repeat;
-  background-position: center left;
-  background-position-x: 0.5em;
-}
-
-@media (min-width: 780px) {
-  .location-forecast .header {
-    background-color: unset;
-    border-radius: unset;
-    padding-inline: unset;
-    padding-block: unset;
-    background-image: unset;
-  }
 }
 
 .modal > article {
@@ -242,22 +216,8 @@ article > footer {
   margin-top: 20%;
 }
 
-.search-box-large > button {
-  border-color: rgb(220, 218, 245);
-  border-radius: 0.5em;
-  width: 100%;
-  padding-block: 0.5em;
-  padding-inline: 1em;
-  text-align: start;
-  border: none;
-  cursor: pointer;
-
-  background-image: var(--ui-icon-search);
-  background-size: 1em auto;
-  background-repeat: no-repeat;
-  background-position: 95% 50%;
-}
-
-.search-box-large > button:hover {
-  opacity: 0.6;
+.list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
