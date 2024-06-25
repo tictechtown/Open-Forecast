@@ -143,8 +143,7 @@ article {
 }
 
 article > footer {
-  font-size: 0.8em;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .timeline-sun {
@@ -244,12 +243,21 @@ article > footer {
 }
 
 .search-box-large > button {
-  background-color: rgb(220, 218, 245);
-  border-radius: 1em;
+  border-color: rgb(220, 218, 245);
+  border-radius: 0.5em;
   width: 100%;
   padding-block: 0.5em;
   padding-inline: 1em;
   text-align: start;
   border: none;
   cursor: pointer;
+
+  background-image: var(--ui-icon-search);
+  background-size: 1em auto;
+  background-repeat: no-repeat;
+  background-position: 95% 50%;
+}
+
+.search-box-large > button:hover {
+  opacity: 0.6;
 }
