@@ -14,7 +14,7 @@
   max-width: 1024px;
 
   .header {
-    background-color: var(--ui-bg-1);
+    background-color: var(--ui-background-1);
     border-radius: 1em;
     padding-inline: 3em;
     padding-block: 0.5em;

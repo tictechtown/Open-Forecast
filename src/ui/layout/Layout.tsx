@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
 import { CityData } from "../../types";
 import { formatCityName } from "../../utils/formatters";
-import SearchBox from "../search/SearchBox";
 import "./Layout.css";
+import NavBarSearchButton from "./components/NavBarSearchButton";
 
 type Props = {
   sideContent: CityData[];
@@ -31,13 +31,11 @@ function Layout({ children, sideContent, selectedId, onSelect }: Props) {
   return (
     <div>
       <nav id="nav-bar">
-        <div className="search-box-small">
-          <SearchBox onSelect={handleAddCity} />
-          <button onClick={handleHideLocation}></button>
-        </div>
-        <div className="search-box-large">
-          <button onClick={handleStartSearch}>Add Location</button>
-        </div>
+        <NavBarSearchButton
+          onAddCity={handleAddCity}
+          onHideSearch={handleHideLocation}
+          onStartSearch={handleStartSearch}
+        />
         <br />
         Saved Locations
         <br />

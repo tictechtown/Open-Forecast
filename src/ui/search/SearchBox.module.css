@@ -20,7 +20,7 @@
   }
 
   .search-box-results li:hover {
-    background-color: var(--ui-ac-3);
+    background-color: var(--ui-hover);
     cursor: pointer;
   }
 }

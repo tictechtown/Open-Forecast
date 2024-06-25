@@ -14,7 +14,7 @@
       font-size: 3em;
       font-weight: bold;
       font-family: var(--ui-font-family-monospace);
-      color: var(--ui-ac-tx);
+      color: var(--ui-primary-text);
     }
 
     .secondary {
@@ -22,7 +22,7 @@
       padding-right: 2em;
 
       div:first-child {
-        color: var(--ui-ac-tx);
+        color: var(--ui-primary-text);
       }
     }
   }
