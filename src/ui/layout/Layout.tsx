@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { CityData } from "../../types";
+import { formatCityName } from "../../utils/formatters";
 import SearchBox from "../search/SearchBox";
 import "./Layout.css";
 
@@ -56,7 +57,7 @@ function Layout({ children, sideContent, selectedId, onSelect }: Props) {
               className={`button ${selected}`}
               onClick={() => handleSelect(s.id)}
             >
-              {`${s.name}, ${s.stateCode}`}
+              {formatCityName(s)}
             </div>
           );
         })}

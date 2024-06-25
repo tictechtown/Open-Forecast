@@ -1,49 +1,12 @@
 import { skipToken, useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import useLocation from "./hooks/useLocation";
 import { getWeatherData } from "./service/weather";
 import useCityStore from "./store/useCityStore";
 import { CityData } from "./types";
 import LocationForecast from "./ui/forecast/LocationForecast";
 import Layout from "./ui/layout/Layout";
 import SearchModal from "./ui/search/SearchModal";
-
-type LocationStatus =
-  | {
-      isPending: false;
-      location: { lat: number; long: number };
-    }
-  | { isPending: true; location: null };
-
-function useLocation(city: CityData | undefined) {
-  const [locationStatus, setLocationStatus] = useState<LocationStatus | null>(
-    city && city.id !== -1
-      ? { isPending: false, location: { lat: city.lat, long: city.long } }
-      : null,
-  );
-  const [locationError, setLocationError] = useState<number | null>(null);
-
-  useEffect(() => {
-    if (city?.id === -1) {
-      setLocationStatus({ isPending: true, location: null });
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setLocationStatus({
-            isPending: false,
-            location: {
-              lat: position.coords.latitude,
-              long: position.coords.longitude,
-            },
-          });
-        },
-        (error) => setLocationError(error.code),
-      );
-    }
-  }, [city?.id === -1]);
-  if (!locationStatus) {
-    return { location: null, isPending: false, locationError: null };
-  }
-  return { ...locationStatus, locationError };
-}
+import { formatCityName } from "./utils/formatters";
 
 const CURRENT_LOCATION = {
   id: -1,
@@ -54,32 +17,54 @@ const CURRENT_LOCATION = {
 };
 
 function WeatherLocation({ city }: { city: CityData | undefined }) {
-  const { location, isPending: isLocationPending } = useLocation(city);
+  const {
+    location,
+    isPending: isLocationPending,
+    error: geoError,
+  } = useLocation(city);
 
   const { isPending, error, data } = useQuery({
     queryKey: ["weather-info", location],
     queryFn:
       location !== null
-        ? ({ queryKey }) => getWeatherData(queryKey[1])
+        ? ({ queryKey }) =>
+            getWeatherData(queryKey[1] as { lat: number; long: number })
         : skipToken,
   });
 
+  const showLocations = () => {
+    document.querySelector("#nav-bar")?.classList.add("active");
+  };
+
   if (!city) {
-    return <div className="location-forecast">Add a city first</div>;
+    return (
+      <div className="location-forecast">
+        <div className="header" onClick={showLocations}>
+          Add a location
+        </div>
+        <div>
+          <h1> Welcome to Open Forecast</h1>
+          <div>
+            You don't have any location yet. To get started, please tap on the
+            button "add a location"
+          </div>
+        </div>
+      </div>
+    );
   }
 
   if (isPending || isLocationPending) {
     return <div className="location-forecast">Loading</div>;
   }
 
-  if (error) {
+  if (error || geoError) {
     return <div className="location-forecast">Error loading</div>;
   }
 
   const { gridId, gridX, gridY } = data.properties;
   return (
     <LocationForecast
-      displayName={`${city.name}, ${city.stateCode}`}
+      displayName={formatCityName(city)}
       gridId={gridId}
       gridX={gridX}
       gridY={gridY}

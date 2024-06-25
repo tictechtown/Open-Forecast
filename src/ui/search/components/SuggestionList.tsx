@@ -1,4 +1,5 @@
 import { CityData } from "../../../types";
+import { formatCityName } from "../../../utils/formatters";
 import styles from "../SearchBox.module.css";
 
 type Props = {
@@ -14,10 +15,9 @@ function SuggestionList({ suggestionsList, showNoResult, onSelect }: Props) {
       <ul>
         {suggestionsList.map((suggestion) => {
           return (
-            <li
-              key={suggestion.id}
-              onClick={() => onSelect(suggestion)}
-            >{`${suggestion.name}, ${suggestion.stateCode}`}</li>
+            <li key={suggestion.id} onClick={() => onSelect(suggestion)}>
+              {formatCityName(suggestion)}
+            </li>
           );
         })}
       </ul>
