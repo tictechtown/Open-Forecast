@@ -1,6 +1,6 @@
 import { skipToken, useQuery } from "@tanstack/react-query";
 import useLocation from "../../hooks/useLocation";
-import { getWeatherData } from "../../service/weather";
+import { getWeatherData } from "../../services/weather";
 import { CityData } from "../../types";
 import { formatCityName } from "../../utils/formatters";
 import LocationForecast from "./LocationForecast";

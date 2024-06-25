@@ -1,6 +1,6 @@
 import Papa from "papaparse";
 import { useMemo, useState } from "react";
-import { PrefixTree } from "../../service/prefix-tree";
+import { PrefixTree } from "../../services/prefix-tree";
 import { CityData } from "../../types";
 import styles from "./SearchBox.module.css";
 import SuggestionList from "./components/SuggestionList";

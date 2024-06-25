@@ -3,9 +3,9 @@ import {
   getDailyForecast,
   getForecast,
   getHourlyForecast,
-} from "../../service/weather";
+} from "../../services/weather";
 import { WeatherForecast, WeatherGridpoint } from "../../types";
-import { convertMeasureValues } from "../../utils/utils";
+import { convertMeasureValues } from "../../utils/converters";
 import "./LocationForecast.css";
 import DailyForecastCard from "./components/DailyForecastCard";
 import DetailForecastCard from "./components/DetailForecastCard";

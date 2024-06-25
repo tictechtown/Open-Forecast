@@ -1,5 +1,5 @@
 import { ForecastPeriod } from "../../../types";
-import { convertCelsiusToF, detectCondition } from "../../../utils/utils";
+import { convertCelsiusToF, detectCondition } from "../../../utils/converters";
 import WeatherConditionIcon from "../../icons/WeatherConditionIcon";
 import "./NowCard.css";
 

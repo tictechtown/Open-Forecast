@@ -1,6 +1,6 @@
 import { ForecastPeriod } from "../../../types";
+import { detectCondition } from "../../../utils/converters";
 import { DayFormatter } from "../../../utils/formatters";
-import { detectCondition } from "../../../utils/utils";
 import WeatherConditionIcon from "../../icons/WeatherConditionIcon";
 
 function DailyForecastItem({

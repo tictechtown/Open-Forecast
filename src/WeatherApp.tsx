@@ -1,4 +1,4 @@
-import useCityStore, { CURRENT_LOCATION } from "./store/useCityStore";
+import useCityStore, { CURRENT_LOCATION } from "./stores/useCityStore";
 import { CityData } from "./types";
 import WeatherLocationForecast from "./ui/forecast/WeatherLocationForecast";
 import Layout from "./ui/layout/Layout";

@@ -1,8 +1,8 @@
 import React from "react";
 import { Chart } from "react-charts";
 import { WeatherGridpoint } from "../../../types";
+import { convertMeasureValues } from "../../../utils/converters";
 import { TimeFormatter } from "../../../utils/formatters";
-import { convertMeasureValues } from "../../../utils/utils";
 
 type Props = {
   probabilityPrecipitationValues: WeatherGridpoint["properties"]["probabilityOfPrecipitation"];

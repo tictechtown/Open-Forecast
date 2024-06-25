@@ -4,7 +4,7 @@ import {
   getConditionText,
   getTimelineClassName,
   processPeriods,
-} from "./processPeriods";
+} from "./utils";
 
 type Props = {
   periods: ForecastPeriod[];
