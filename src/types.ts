@@ -211,4 +211,5 @@ export type CityData = {
   stateCode: string;
   lat: number;
   long: number;
+  population: number;
 };

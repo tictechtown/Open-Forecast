@@ -10,7 +10,7 @@ Toy project to learn/re-learn CSS properties
   - Manage Data Fetching using [React-Query](https://tanstack.com/query/v3)
 - GeoLocation using custom Trie implementation
   - supports search with typo
-  - **TODO** supports weighted results, using population
+  - supports weighted results, using population data
   - search is completely local, no 3rd-party service used
 - Location Management using [Zustand](https://github.com/pmndrs/zustand), with persistence on LocalStorage
 - Adaptive Layout (mobile vs desktop)
@@ -25,7 +25,7 @@ Toy project to learn/re-learn CSS properties
 ├── package.json
 ├── public
 │   ├── favicon.svg
-│   └── us_cities.csv
+│   └── us-cities.csv
 │   ├── App.css
 │   ├── App.tsx
 │   ├── WeatherApp.tsx
@@ -72,7 +72,6 @@ Toy project to learn/re-learn CSS properties
 
 ## Roadmap
 
-- Add weighted search
 - Remove city from list
 - Simplify rain forecast
 - Update hourly forecast to dim night time

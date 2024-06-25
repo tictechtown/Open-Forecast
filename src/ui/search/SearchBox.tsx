@@ -4,7 +4,7 @@ import { PrefixTree } from "../../services/prefix-tree";
 import { CityData } from "../../types";
 import styles from "./SearchBox.module.css";
 import SuggestionList from "./components/SuggestionList";
-import publicCSV from "/us_cities.csv?url";
+import publicCSV from "/us-cities.csv?url";
 
 const prefixTree = new PrefixTree<CityData>();
 
@@ -16,15 +16,16 @@ Papa.parse(cityListUrl, {
   worker: true,
   download: true,
   step: function (row: {
-    // id, state_code, state_name, city, county, latitude, longitude
-    data: [number, string, string, string, string, number, number];
+    // id, state_code, city, latitude, longitude, population
+    data: [number, string, string, number, number, number];
   }) {
     const data: CityData = {
       id: row.data[0],
-      name: row.data[3],
+      name: row.data[2],
       stateCode: row.data[1],
-      lat: row.data[5],
-      long: row.data[6],
+      lat: row.data[3],
+      long: row.data[4],
+      population: row.data[5],
     };
     prefixTree.insertWord(data.name + data.stateCode, data);
   },
@@ -50,6 +51,10 @@ function SearchBox({ onSelect, large = false }: Props) {
     if (matches.length === 0) {
       matches = prefixTree.searchWithPrefix(searchValue, 1);
     }
+
+    // we sort results by population desc
+    matches.sort((a, b) => b.population - a.population);
+
     return matches.slice(0, 10);
   }, [searchValue]);
 
