@@ -1,4 +1,5 @@
 import { ForecastPeriod } from "../../../types";
+import { DayFormatter } from "../../../utils/formatters";
 import { detectCondition } from "../../../utils/utils";
 import WeatherConditionIcon from "../../icons/WeatherConditionIcon";
 
@@ -17,10 +18,7 @@ function DailyForecastItem({
   maxTemp: number;
 }) {
   const date = new Date(period[0].startTime);
-  const day =
-    index == 0
-      ? "Now"
-      : new Intl.DateTimeFormat("en-US", { weekday: "short" }).format(date);
+  const day = index == 0 ? "Now" : DayFormatter.format(date);
 
   const minLocalTemp = Math.min(period[0].temperature, period[1].temperature);
   const maxLocalTemp = Math.max(period[0].temperature, period[1].temperature);
@@ -41,7 +39,9 @@ function DailyForecastItem({
 
   return (
     <div className="grid-item align-items">
-      <div className="grid-item-day">{day}</div>
+      <div className="grid-item-day">
+        <strong>{day}</strong>
+      </div>
       <div className="grid-item-icon">
         <WeatherConditionIcon condition={dayCondition} />
       </div>

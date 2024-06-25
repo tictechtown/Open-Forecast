@@ -18,14 +18,11 @@
     }
 
     .secondary {
-      font-size: 0.9em;
       text-align: end;
-      font-weight: 300;
       padding-right: 2em;
 
       div:first-child {
         color: var(--ui-ac-tx);
-        font-weight: 500;
       }
     }
   }

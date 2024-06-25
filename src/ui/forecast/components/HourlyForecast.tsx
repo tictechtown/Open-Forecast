@@ -1,4 +1,5 @@
 import { ForecastPeriod, WeatherCondition } from "../../../types";
+import { TimeFormatter } from "../../../utils/formatters";
 import { detectCondition } from "../../../utils/utils";
 
 function getTimelineClassName(condition: WeatherCondition): string {
@@ -104,9 +105,7 @@ function HourlyForecastCard({ periods }: Props) {
         {displayedPeriods.map((period, index) => {
           const p = period.period;
           const date = new Date(p.startTime);
-          const hour = new Intl.DateTimeFormat("en-US", {
-            hour: "2-digit",
-          }).format(date);
+          const hour = TimeFormatter.format(date);
 
           const currentTemp = p.temperature;
           const percentage =

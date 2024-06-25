@@ -1,6 +1,7 @@
 import React from "react";
 import { Chart } from "react-charts";
 import { WeatherGridpoint } from "../../../types";
+import { TimeFormatter } from "../../../utils/formatters";
 import { convertMeasureValues } from "../../../utils/utils";
 
 type Props = {
@@ -38,16 +39,24 @@ function RainForecast({
   ];
   const primaryAxis = React.useMemo(
     () => ({
-      getValue: (datum) => datum.time as Date,
+      getValue: (datum: { time: Date }) => datum.time,
+      hardMin: probNext24h[0].time,
+      hardMax: probNext24h[probNext24h.length - 1].time,
+      scaleType: "localTime",
+      formatters: {
+        scale: (data: Date) => TimeFormatter.format(data),
+      },
     }),
-    [],
+    [probNext24h],
   );
 
   const secondaryAxes = React.useMemo(
     () => [
       {
-        getValue: (datum) => datum.value,
+        getValue: (datum: { value: number | null }) => datum.value,
         stacked: true,
+        hardMax: 100,
+        hardMin: 0,
       },
     ],
     [],
@@ -59,9 +68,12 @@ function RainForecast({
       <article style={{ minHeight: "200px" }}>
         <Chart
           options={{
+            tooltip: false,
+            useIntersectionObserver: false,
             data,
             primaryAxis,
             secondaryAxes,
+            padding: 20,
           }}
         />
       </article>
