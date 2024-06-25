@@ -5,6 +5,7 @@ import MostlyCloudy from "./components/MostlyCloudy";
 import MostlySunny from "./components/MostlySunny";
 import PartlyCloudy from "./components/PartlyCloudy";
 import Rain from "./components/Rain";
+import Snowy from "./components/Snowy";
 import Sunny from "./components/Sunny";
 import Thunder from "./components/Thunder";
 
@@ -29,7 +30,7 @@ function WeatherConditionIcon({ condition }: Props) {
     case WeatherCondition.PartialSunny:
       return <PartlyCloudy />;
     case WeatherCondition.Snow:
-      return <Cloudy />; // TODO
+      return <Snowy />;
     case WeatherCondition.Sunny:
       return <Sunny />;
     case WeatherCondition.Thunder:

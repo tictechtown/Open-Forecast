@@ -1,6 +1,6 @@
 import Cloud from "./Cloud";
 import "./Icons.css";
-import { RainDrops } from "./Rain";
+import RainDrops from "./RainDrops";
 import Sun from "./Sun";
 
 function Shower() {
