@@ -3,8 +3,11 @@ import useLocation from "../../hooks/useLocation";
 import { getWeatherData } from "../../services/weather";
 import { CityData } from "../../types";
 import { formatCityName } from "../../utils/formatters";
-import Loader from "../common/Loader";
+import LocationLoader from "../common/LocationLoader";
+import StationLoader from "../common/StationLoader";
 import LocationForecast from "./LocationForecast";
+import ErrorContent from "./components/ErrorContent";
+import WelcomeContent from "./components/WelcomeContent";
 
 function WeatherLocationForecast({ city }: { city: CityData | undefined }) {
   const {
@@ -22,40 +25,62 @@ function WeatherLocationForecast({ city }: { city: CityData | undefined }) {
         : skipToken,
   });
 
-  const showLocations = () => {
+  const handleShowModal = () => {
+    (document.querySelector("#search-modal") as HTMLDialogElement)?.showModal();
+    document.querySelector("#nav-bar")?.classList.add("active");
+  };
+
+  const handleShowNavBar = () => {
     document.querySelector("#nav-bar")?.classList.add("active");
   };
 
   if (!city) {
     return (
-      <div className="location-forecast">
-        <div className="header" onClick={showLocations}>
-          Add a location
-        </div>
-        <div>
-          <h1> Welcome to Open Forecast</h1>
-          <div>
-            You don't have any location yet. To get started, please tap on the
-            button "add a location"
-          </div>
-        </div>
+      <WelcomeContent
+        onClickModal={handleShowModal}
+        onClickNavBar={handleShowNavBar}
+      />
+    );
+  }
+
+  if (isLocationPending) {
+    return (
+      <div className="location-context pad">
+        <LocationLoader />
+        <div>Fetching Location Data</div>
       </div>
     );
   }
 
-  if (isPending || isLocationPending) {
+  if (isPending) {
     return (
-      <div className="location-forecast">
-        <div className="location-context">
-          <Loader />
-          <div>Loading Content</div>
-        </div>
+      <div className="location-context pad">
+        <StationLoader />
+        <div>Finding Weather Station</div>
       </div>
+    );
+  }
+
+  if (geoError) {
+    return (
+      <ErrorContent
+        onClickModal={handleShowModal}
+        onClickNavBar={handleShowNavBar}
+      >
+        Error Getting Geolocation, Please Enable it first
+      </ErrorContent>
     );
   }
 
   if (error || geoError) {
-    return <div className="location-forecast">Error loading</div>;
+    return (
+      <ErrorContent
+        onClickModal={handleShowModal}
+        onClickNavBar={handleShowNavBar}
+      >
+        Error Getting Station Data
+      </ErrorContent>
+    );
   }
 
   const { gridId, gridX, gridY } = data.properties;

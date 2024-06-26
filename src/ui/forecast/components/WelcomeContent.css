@@ -1,0 +1,19 @@
+.welcome-content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  gap: 2em;
+}
+
+.welcome-content > h1 {
+  line-height: normal;
+  text-align: center;
+}
+
+.welcome-description {
+  text-align: center;
+  max-width: 800px;
+}

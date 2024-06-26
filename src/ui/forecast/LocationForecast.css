@@ -1,6 +1,8 @@
 .location-forecast {
   display: grid;
   gap: 1em;
+
+  align-items: center;
   grid-template-areas:
     "header"
     "now"
@@ -9,8 +11,8 @@
     "details"
     "rain";
 
-  padding: 1em;
-  margin-inline: auto;
+  min-width: 0;
+  width: 100%;
   max-width: 1024px;
 
   .header {
@@ -37,6 +39,7 @@
   }
   .hourly-card {
     grid-area: hourly;
+    min-width: 0;
   }
   .daily-card {
     grid-area: daily;
@@ -76,7 +79,7 @@
 
 @media (min-width: 1120px) {
   .location-forecast {
-    margin-left: 18%;
+    margin-inline: auto;
 
     .header {
       background-color: unset;
@@ -98,9 +101,10 @@
   display: flex;
   flex-direction: column;
   gap: 1em;
-  margin-top: 1em;
-  justify-self: center;
+  justify-content: center;
   align-items: center;
+  flex: 1;
+  height: 100%;
 
   > :first-child {
     width: 3em;

@@ -25,6 +25,7 @@ function WeatherApp() {
       sideContent={store.cities}
       selectedId={store.selectedId}
       onSelect={handleCitySelection}
+      onSearchSelect={handleAddCity}
     >
       <SearchModal onSelect={handleAddCity} />
       <WeatherLocationForecast key={selectedCity?.id} city={selectedCity} />

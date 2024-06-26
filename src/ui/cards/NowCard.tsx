@@ -1,6 +1,6 @@
-import { ForecastPeriod } from "../../../types";
-import { convertCelsiusToF, detectCondition } from "../../../utils/converters";
-import WeatherConditionIcon from "../../icons/WeatherConditionIcon";
+import { ForecastPeriod } from "../../types";
+import { convertCelsiusToF, detectCondition } from "../../utils/converters";
+import WeatherConditionIcon from "../icons/WeatherConditionIcon";
 import "./NowCard.css";
 
 type Props = {
@@ -22,7 +22,9 @@ function NowCard({ period, feelTemp, highTemp, lowTemp }: Props) {
           <WeatherConditionIcon condition={detectCondition(period)} />
         </div>
         <div className="secondary">
-          <div>{period.shortForecast}</div>
+          <div>
+            <strong>{period.shortForecast}</strong>
+          </div>
           <div>Feels like {convertCelsiusToF(feelTemp)}°</div>
         </div>
       </div>

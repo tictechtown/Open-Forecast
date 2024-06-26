@@ -4,14 +4,17 @@ nav {
   position: absolute;
   height: 100vh;
   width: 100%;
-  display: none;
+  display: flex;
   flex-direction: column;
   padding-inline: 1em;
   gap: 0.5em;
   z-index: 1;
+  transform: translateX(-100%);
+  transition: transform var(--ui-transition);
 
   &.active {
     display: flex;
+    transform: translateX(0);
   }
 
   .button {
@@ -36,12 +39,28 @@ nav {
   }
 }
 
+.layout {
+  height: 100vh;
+  display: flex;
+}
+
+.layout > main {
+  flex: 1;
+}
+
 @media (min-width: 1120px) {
-  nav {
+  .layout {
     display: flex;
-    width: unset;
-    min-width: 15%;
+  }
+  main {
+    width: 100%;
+  }
+  nav {
+    position: initial;
+    display: flex;
+    width: 14em;
     border-top-right-radius: 1em;
     border-bottom-right-radius: 1em;
+    transform: translateX(0);
   }
 }

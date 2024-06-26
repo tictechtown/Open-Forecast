@@ -6,13 +6,13 @@ import {
 } from "../../services/weather";
 import { WeatherForecast, WeatherGridpoint } from "../../types";
 import { convertMeasureValues } from "../../utils/converters";
+import DailyForecastCard from "../cards/DailyForecastCard";
+import DetailForecastCard from "../cards/DetailForecastCard";
+import HourlyForecastCard from "../cards/HourlyForecastCard";
+import NowCard from "../cards/NowCard";
+import RainForecastCard from "../cards/RainForecastCard";
 import Loader from "../common/Loader";
 import "./LocationForecast.css";
-import DailyForecastCard from "./components/DailyForecastCard";
-import DetailForecastCard from "./components/DetailForecastCard";
-import HourlyForecastCard from "./components/HourlyForecastCard";
-import NowCard from "./components/NowCard";
-import RainForecastCard from "./components/RainForecastCard";
 
 type Props = {
   displayName: string;
@@ -62,7 +62,7 @@ function LocationForecast({ displayName, gridId, gridX, gridY }: Props) {
     return (
       <div className="location-forecast">
         <div className="header" onClick={showLocations}>
-          <h1>{displayName}</h1>
+          <h2>{displayName}</h2>
           <Loader />
         </div>
       </div>
@@ -73,7 +73,7 @@ function LocationForecast({ displayName, gridId, gridX, gridY }: Props) {
     return (
       <div className="location-forecast">
         <div className="header" onClick={showLocations}>
-          <h1>{displayName}</h1>
+          <h2>{displayName}</h2>
         </div>
         Error getting data
       </div>
@@ -102,9 +102,9 @@ function LocationForecast({ displayName, gridId, gridX, gridY }: Props) {
   );
 
   return (
-    <div className="location-forecast">
+    <div className="location-forecast pad">
       <div className="header" onClick={showLocations}>
-        <h1>{displayName}</h1>
+        <h2>{displayName}</h2>
       </div>
 
       <NowCard
@@ -119,6 +119,12 @@ function LocationForecast({ displayName, gridId, gridX, gridY }: Props) {
       <RainForecastCard
         probabilityPrecipitationValues={probabilityPrecipitationValues}
       />
+      <div className="footer">
+        Powered by{" "}
+        <a href="https://www.weather.gov/documentation/services-web-api">
+          Weather.gov
+        </a>
+      </div>
     </div>
   );
 }

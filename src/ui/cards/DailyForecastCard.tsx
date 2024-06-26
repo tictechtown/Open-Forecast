@@ -1,4 +1,4 @@
-import { ForecastPeriod } from "../../../types";
+import { ForecastPeriod } from "../../types";
 import DailyForecastItem from "./DailyForecastItem";
 
 type Props = {

@@ -1,4 +1,5 @@
 import { CityData } from "../../../types";
+import SearchButton from "../../common/SearchButton";
 import SearchBox from "../../search/SearchBox";
 import "./NavBarSearchButton.css";
 
@@ -16,9 +17,7 @@ function NavBarSearchButton({ onAddCity, onStartSearch, onHideSearch }: Props) {
         <SearchBox onSelect={onAddCity} />
       </div>
       <div className="search-box-large">
-        <button onClick={onStartSearch}>
-          <span className="search-btn">Add Location</span>
-        </button>
+        <SearchButton onClick={onStartSearch} />
       </div>
     </>
   );

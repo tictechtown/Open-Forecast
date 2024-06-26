@@ -1,0 +1,17 @@
+.location-loader {
+  display: grid;
+}
+
+.location-loader > div {
+  grid-column: 1;
+  grid-row: 1;
+  width: unset;
+  height: unset;
+}
+.location-loader > svg {
+  grid-column: 1;
+  grid-row: 1;
+  padding: 0.25em;
+  width: 3em;
+  height: 3em;
+}

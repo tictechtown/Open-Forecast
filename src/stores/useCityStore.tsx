@@ -19,6 +19,7 @@ export const CURRENT_LOCATION = {
   long: -1,
   name: "Current Location",
   stateCode: "",
+  population: 0,
 };
 
 const useCityStore = create<State & Action>()(
@@ -45,7 +46,7 @@ const useCityStore = create<State & Action>()(
     }),
     {
       name: "open-news-ui",
-      storage: createJSONStorage(() => sessionStorage),
+      storage: createJSONStorage(() => localStorage),
     },
   ),
 );

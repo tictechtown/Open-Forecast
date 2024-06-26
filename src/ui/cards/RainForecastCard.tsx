@@ -1,8 +1,9 @@
 import React from "react";
 import { Chart } from "react-charts";
-import { WeatherGridpoint } from "../../../types";
-import { convertMeasureValues } from "../../../utils/converters";
-import { TimeFormatter } from "../../../utils/formatters";
+import { WeatherGridpoint } from "../../types";
+import { convertMeasureValues } from "../../utils/converters";
+import { TimeFormatter } from "../../utils/formatters";
+import "./RainForecastCard.css";
 
 type Props = {
   probabilityPrecipitationValues: WeatherGridpoint["properties"]["probabilityOfPrecipitation"];
@@ -61,19 +62,20 @@ function RainForecastCard({ probabilityPrecipitationValues }: Props) {
   return (
     <div className="rain-card">
       <h4>Percentage Rain Forecast</h4>
-      <article style={{ minHeight: "200px" }}>
-        <Chart
-          options={{
-            tooltip: false,
-            useIntersectionObserver: false,
-            data,
-            // @ts-ignore
-            primaryAxis,
-            secondaryAxes,
-            padding: 20,
-            dark: isInDarkMode,
-          }}
-        />
+      <article>
+        <div className="chart-container">
+          <Chart
+            options={{
+              tooltip: false,
+              useIntersectionObserver: false,
+              data,
+              // @ts-ignore
+              primaryAxis,
+              secondaryAxes,
+              dark: isInDarkMode,
+            }}
+          />
+        </div>
       </article>
     </div>
   );

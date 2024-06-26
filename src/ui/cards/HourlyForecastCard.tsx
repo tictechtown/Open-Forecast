@@ -1,5 +1,5 @@
-import { ForecastPeriod } from "../../../types";
-import { TimeFormatter } from "../../../utils/formatters";
+import { ForecastPeriod } from "../../types";
+import { TimeFormatter } from "../../utils/formatters";
 import {
   getConditionText,
   getTimelineClassName,

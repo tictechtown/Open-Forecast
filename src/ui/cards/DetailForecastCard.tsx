@@ -1,6 +1,6 @@
-import { WeatherGridpoint } from "../../../types";
+import { WeatherGridpoint } from "../../types";
 import "./DetailForecastCard.css";
-import DetailItem from "./DetailItem";
+import DetailItem from "./components/DetailItem";
 
 type Props = {
   gridpoint: WeatherGridpoint;

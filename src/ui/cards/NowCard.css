@@ -5,8 +5,8 @@
   .main {
     display: flex;
     flex-direction: row;
-    gap: 5em;
     justify-content: space-between;
+    gap: 1em;
 
     .primary {
       display: flex;
@@ -19,10 +19,19 @@
 
     .secondary {
       text-align: end;
-      padding-right: 2em;
 
       div:first-child {
         color: var(--ui-primary-text);
+      }
+    }
+  }
+}
+
+@media (min-width: 1120px) {
+  .now-card {
+    .main {
+      .secondary {
+        padding-right: 3em;
       }
     }
   }
