@@ -1,4 +1,5 @@
 import { WeatherGridpoint } from "../../types";
+import { convertCelsiusToF } from "../../utils/converters";
 import "./DetailForecastCard.css";
 import DetailItem from "./components/DetailItem";
 
@@ -19,7 +20,9 @@ function DetailForecastCard({ gridpoint }: Props) {
           />
           <DetailItem
             title="Dew Point"
-            value={gridpoint.properties.dewpoint.values[0].value}
+            value={convertCelsiusToF(
+              gridpoint.properties.dewpoint.values[0].value ?? 0,
+            )}
             unit={"F"}
           />
           <DetailItem

@@ -5,9 +5,18 @@
   padding: 1em;
   background-color: var(--ui-background-0);
   align-items: center;
+  text-align: center;
   max-width: 8rem;
   .detail-value {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
+  }
+}
+
+@media (min-width: 1120px) {
+  .detail-item {
+    .detail-value {
+      font-size: 2rem;
+    }
   }
 }

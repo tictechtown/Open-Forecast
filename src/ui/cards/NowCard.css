@@ -6,7 +6,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 1em;
 
     .primary {
       display: flex;
@@ -19,7 +18,10 @@
 
     .secondary {
       text-align: end;
-
+      line-height: normal;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
       div:first-child {
         color: var(--ui-primary-text);
       }
