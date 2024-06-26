@@ -7,7 +7,7 @@ type Props = {
 
 function WelcomeContent({ onClickModal, onClickNavBar }: Props) {
   return (
-    <div className="welcome-content">
+    <div className="welcome-content pad">
       <h1> Welcome to Open Forecast</h1>
       <div className="welcome-description">
         You don't have any location yet.

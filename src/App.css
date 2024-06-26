@@ -102,105 +102,11 @@ h6 {
   color: var(--ui-primary-text);
 }
 
-.grid-item {
-  display: flex;
-  gap: 1em;
-  &.align-items {
-    align-items: center;
-  }
-}
-
-.grid-item-day {
-  width: 52px;
-  &.text-align-end {
-    text-align: end;
-  }
-}
-
-.grid-item-icon {
-  width: 50px;
-}
-
-.grid-item-range {
-  flex: 1;
-  display: flex;
-}
-
-.timeline {
-  width: 1em;
-  height: inherit;
-}
-
-.grid-item:first-of-type .timeline {
-  border-top-left-radius: var(--ui-border-radius);
-  border-top-right-radius: var(--ui-border-radius);
-}
-
-.grid-item:last-of-type .timeline {
-  border-bottom-left-radius: var(--ui-border-radius);
-  border-bottom-right-radius: var(--ui-border-radius);
-}
-
-.grid-item-card {
-  background-color: var(--ui-primary);
-  border-radius: 0.8em;
-  padding-inline: 0.5em;
-  padding-block: 0.2em;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.grid-item-status {
-  width: 100px;
-  text-wrap: nowrap;
-  overflow: hidden;
-}
-
 article {
   border-radius: 1em;
   background-color: var(--ui-surface);
   padding: 1em;
   box-shadow: 0 0 0 1px var(--ui-card-border);
-}
-
-.timeline-sun {
-  background-color: #ffd700;
-}
-
-.timeline-almost-sun {
-  background-color: #f9e79f;
-}
-
-.timeline-clear {
-  background-color: #191970;
-}
-
-.timeline-cloudy {
-  background-color: #c4c4c4;
-}
-
-.timeline-light-rain {
-  background-color: #8eacbb;
-}
-.timeline-rain {
-  background-color: #4a6f8a;
-}
-
-.timeline-overcast {
-  background-color: #8c9ba5;
-}
-
-.timeline-partial-sunny {
-  background-color: #e6d7a1;
-}
-
-.timeline-snow {
-  background-color: #fff;
-}
-
-.timeline-thunder {
-  background-color: #3a3a45;
 }
 
 .modal {

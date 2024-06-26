@@ -8,7 +8,7 @@ type Props = {
 
 function ErrorContent({ children, onClickModal, onClickNavBar }: Props) {
   return (
-    <div className="error-content">
+    <div className="error-content pad">
       <div className="error-description">{children}</div>
       <div className="show-only-sm">
         <SearchButton onClick={onClickNavBar} />

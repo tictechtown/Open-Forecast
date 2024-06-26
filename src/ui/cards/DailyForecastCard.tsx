@@ -1,5 +1,6 @@
 import { ForecastPeriod } from "../../types";
 import DailyForecastItem from "./DailyForecastItem";
+import "./Timeline.css";
 
 type Props = {
   periods: ForecastPeriod[];
