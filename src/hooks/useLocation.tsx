@@ -21,8 +21,9 @@ export default function useLocation(city: CityData | undefined) {
       : null,
   );
 
+  const needsGeolocation = city?.id == -1;
   useEffect(() => {
-    if (city?.id === -1) {
+    if (needsGeolocation) {
       setLocationStatus({ isPending: true, location: null, error: null });
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -39,7 +40,7 @@ export default function useLocation(city: CityData | undefined) {
           setLocationStatus({ isPending: false, error, location: null }),
       );
     }
-  }, [city?.id === -1]);
+  }, [needsGeolocation]);
   if (!locationStatus) {
     return {
       location: null,

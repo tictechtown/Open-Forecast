@@ -69,6 +69,7 @@ function RainForecastCard({ probabilityPrecipitationValues }: Props) {
               tooltip: false,
               useIntersectionObserver: false,
               data,
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore
               primaryAxis,
               secondaryAxes,

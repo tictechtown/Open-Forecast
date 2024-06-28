@@ -48,6 +48,8 @@ function NavBar({ sideContent, selectedId, onSelect, onSearchSelect }: Props) {
       <br />
       {supportsGeoLocation && (
         <div
+          role="button"
+          tabIndex={0}
           className={`button ${selectedId === -1 ? "selected" : ""}`}
           onClick={() => handleSelect(-1)}
         >
@@ -75,6 +77,8 @@ function NavBar({ sideContent, selectedId, onSelect, onSearchSelect }: Props) {
         return (
           <div
             key={s.id}
+            role="button"
+            tabIndex={0}
             className={`button ${selected}`}
             onClick={() => handleSelect(s.id)}
           >

@@ -14,7 +14,7 @@ function DailyForecastCard({ periods }: Props) {
     minTemp = Math.min(minTemp, p.temperature);
     maxTemp = Math.max(maxTemp, p.temperature);
   }
-
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const groupedPeriods: Record<number, ForecastPeriod[]> = Object.groupBy(
     periods,

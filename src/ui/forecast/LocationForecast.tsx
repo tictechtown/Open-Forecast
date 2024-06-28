@@ -13,6 +13,7 @@ import NowCard from "../cards/NowCard";
 import RainForecastCard from "../cards/RainForecastCard";
 import Loader from "../common/Loader";
 import "./LocationForecast.css";
+import ForecastHeader from "./components/ForecastHeader";
 
 type Props = {
   displayName: string;
@@ -61,10 +62,8 @@ function LocationForecast({ displayName, gridId, gridX, gridY }: Props) {
   if (isPending || isHourlyPending || isDailyPending) {
     return (
       <div className="location-forecast">
-        <div className="header" onClick={showLocations}>
-          <h2>{displayName}</h2>
-          <Loader />
-        </div>
+        <ForecastHeader displayName={displayName} onClick={showLocations} />
+        <Loader />
       </div>
     );
   }
@@ -72,9 +71,7 @@ function LocationForecast({ displayName, gridId, gridX, gridY }: Props) {
   if (error || hourlyError || dailyError) {
     return (
       <div className="location-forecast">
-        <div className="header" onClick={showLocations}>
-          <h2>{displayName}</h2>
-        </div>
+        <ForecastHeader displayName={displayName} onClick={showLocations} />
         Error getting data
       </div>
     );
@@ -103,9 +100,7 @@ function LocationForecast({ displayName, gridId, gridX, gridY }: Props) {
 
   return (
     <div className="location-forecast pad">
-      <div className="header" onClick={showLocations}>
-        <h2>{displayName}</h2>
-      </div>
+      <ForecastHeader displayName={displayName} onClick={showLocations} />
 
       <NowCard
         period={nowPeriod}
