@@ -2,7 +2,9 @@
 
 A weather app built with [Vite](https://vitejs.dev/), [React](https://react.dev/) and [Typescript](https://www.typescriptlang.org/).
 
-Toy project to learn/re-learn CSS properties
+Toy project to learn/re-learn CSS properties.
+
+You can access the page here: [Open Forecast](https://open-forecast.pages.dev/)
 
 ## Features
 
